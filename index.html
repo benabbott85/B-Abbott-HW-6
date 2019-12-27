@@ -30,12 +30,12 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-
+        $(document).ready(function(){
             var cities = ["Denver", "New York City", "Boston", "Park City"]
 
-            function displayCityInfo() {
-                var city = $(this).attr("data-name");
-                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?id=524901" + city + "&APPID=8bdc138db451bfafd4d5b52763481155";
+            function displayCityInfo(city) {
+                // var city = $("#city-input").val();
+                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?id=" + city + "APPID=8bdc138db451bfafd4d5b52763481155&units=imperial";
 
                 //AJAX call to be created for city that is being clicked on
                 $.ajax({
@@ -64,20 +64,22 @@
             }
 
 
-            $("#add-city").on("click", function(event){
+            $("#add-city").on("click", function (event) {
                 event.preventDefault();
                 var city = $("#city-input").val().trim();
                 cities.push(city);
                 console.log(cities);
 
                 renderButtons();
+                displayCityInfo(city);
             });
 
-            $(document).on("click", ".city", displayCityInfo);
+        })
+            // $(document).on("click", ".city", displayCityInfo);
         </script>
     </div>
 
-    
+
 
 </body>
 
