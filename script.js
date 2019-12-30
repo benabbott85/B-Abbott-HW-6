@@ -5,11 +5,12 @@ var date = "todays date";
 var humidity = 0;
 var wind =0;
 var UV= 0;
-var cities = ["Denver", "New York City", "Boston", "Park City"];
+var cities = ["Denver", "New York", "Boston", "Park City"];
 var apiKey= "97f6b9fea4e913baec982dbbc4d7cf82";
 var latCurrent = 0;
 var lonCurrent = 0;
 var locationCurrent = "everywhere";
+var date = 0;
 
 
 
@@ -37,27 +38,42 @@ var locationCurrent = "everywhere";
             latCurrent= response.coord.lat;
             console.log("lat " + latCurrent);
             lonCurrent = response.coord.lon;
-            $("#tempCurrent").text("Temperature: " + temperature + " F");
-            $("#locationCurrent").text(locationCurrent + "(" + date + ")");
-            $("#humidCurrent").text("Humidity: " + humidity + " %");
-            $("#windCurrent").text("Wind Speed: " + wind + " MPH");
+            // $("#tempCurrent").text("Temperature: " + temperature + " F");
+            // $("#locationCurrent").text(locationCurrent + "(" + date + ")");
+            // $("#humidCurrent").text("Humidity: " + humidity + " %");
+            // $("#windCurrent").text("Wind Speed: " + wind + " MPH");
             // $("#UVCurrent").text("UV Index: " + UV);
-            var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid" + apiKey + "&lat= " + latCurrent + "&lon=" + lonCurrent;
+            var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + latCurrent + "&lon=" + lonCurrent;
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response){
                 console.log(response);
                 UV=response.value;
-                jumboPop;
+                // jumboPop;
+                date = response.date_iso;
+                var split = date.split("T");
+                date = split[0];
+                $("#tempCurrent").text("Temperature: " + temperature + " F");
+                $("#locationCurrent").text(locationCurrent + "(" + date + ")");
+                $("#humidCurrent").text("Humidity: " + humidity + " %");
+                $("#windCurrent").text("Wind Speed: " + wind + " MPH");
+                $("#UVCurrent").text("UV Index: " + UV);
             })
+            var queryURL = "http://api.openweathermap.org/data/2.5/forecast?appid=" + apiKey + "?q=" + locationCurrent;
             
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response){
+                console.log(response);
+            })
 
             
 
-            // for (var i = 0; i < recordNumber.length; i++) {
-            //     var outputInfo = $("<div>")
-            //     outputInfo.text(`${i + 1}
+            
+
+            
         })
 
 
@@ -89,8 +105,14 @@ var locationCurrent = "everywhere";
         var recordNumber = $("#recordNumber").val();
 
         renderButtons();
-        displayCityInfo(city);
+        displayCityInfo();
     });
+
+    $("#buttons-view").on("click", "button", function (){
+        locationCurrent = $(this).attr("data-name");
+        console.log(locationCurrent);
+        displayCityInfo();
+    })
 renderButtons();
 })
 
