@@ -11,13 +11,10 @@ var latCurrent = 0;
 var lonCurrent = 0;
 var locationCurrent = "everywhere";
 var date = 0;
+var temp5day =[];
+var date5day = [];
+var humidity5day = [];
 
-
-
-
-
-
-    
 
     
 
@@ -30,13 +27,13 @@ var date = 0;
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
+            // console.log(response);
             temperature = ((response.main.temp)- 273.15) * 9/5 + 32;
             temperature = temperature.toFixed(2);
             humidity = response.main.humidity;
             wind = response.wind.speed;
             latCurrent= response.coord.lat;
-            console.log("lat " + latCurrent);
+            // console.log("lat " + latCurrent);
             lonCurrent = response.coord.lon;
             // $("#tempCurrent").text("Temperature: " + temperature + " F");
             // $("#locationCurrent").text(locationCurrent + "(" + date + ")");
@@ -48,7 +45,7 @@ var date = 0;
                 url: queryURL,
                 method: "GET"
             }).then(function (response){
-                console.log(response);
+                // console.log(response);
                 UV=response.value;
                 // jumboPop;
                 date = response.date_iso;
@@ -60,13 +57,24 @@ var date = 0;
                 $("#windCurrent").text("Wind Speed: " + wind + " MPH");
                 $("#UVCurrent").text("UV Index: " + UV);
             })
-            var queryURL = "http://api.openweathermap.org/data/2.5/forecast?appid=" + apiKey + "?q=" + locationCurrent;
+            var queryURL = "http://api.openweathermap.org/data/2.5/forecast?appid=" + apiKey + "&q=" + locationCurrent;
             
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response){
-                console.log(response);
+                // console.log(response);
+                for ( var i =0; i < 5; i++){
+                    temp5day[i] = (((response.list[4+(i*8)].main.temp)-273.15)*9/5 + 32).toFixed(2);
+                    console.log(temp5day);
+                    var dateTemp= response.list[4+(i*8)].dt_txt;
+                    dateTemp = dateTemp.split(" ");
+                    date5day[i] = dateTemp[0];
+                    console.log(date5day);
+                    humidity5day[i]= response.list[4=(i*8)].main.humidity;                
+                    console.log(humidity5day);
+                }
+                
             })
 
             
