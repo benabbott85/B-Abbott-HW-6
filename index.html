@@ -6,15 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
 
+
+
     <div class="container">
         <h1>Weather Dashboard</h1>
 
-        <div id="buttons-view"></div>
+        <div class="jumbotron">
+            <h1 class="display-4">Current City</h1>
+            <p>Date:</p>
+            <p>Temperature:</p>
+            <p>Humidity:</p>
+            <p>Wind Speed:</p>
+            <p>UV Index:</p>
+
+
+        </div>
+
+        <h2>5 Day Forecast:</h2>
+
+        <div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a short card.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div id="buttons-view"></div>
 
         <form id="city-form">
             <label for="city-input"></label>
@@ -22,7 +91,7 @@
             <br>
 
             <!-- Button will add new city -->
-            <input id="add-city" type="submit" value="Search for City">
+        <input id="add-city" type="submit" value="Search for City">
         </form>
 
         <!-- Cities will get put here -->
@@ -30,53 +99,63 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-        $(document).ready(function(){
-            var cities = ["Denver", "New York City", "Boston", "Park City"]
+            $(document).ready(function () {
+                var cities = ["Denver", "New York City", "Boston", "Park City"]
 
-            function displayCityInfo(city) {
-                // var city = $("#city-input").val();
-                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?id=524901" + city +"&APPID=97f6b9fea4e913baec982dbbc4d7cf82";
+                function displayCityInfo(city) {
+                    // var city = $("#city-input").val();
+                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=97f6b9fea4e913baec982dbbc4d7cf82";
 
-                //AJAX call to be created for city that is being clicked on
-                $.ajax({
-                    url: queryURL,
-                    method: "GET"
-                }).then(function (response) {
-                    $("#city-view").text(JSON.stringify(response));
-                    console.log(response);
-                })
-            }
+                    //AJAX call to be created for city that is being clicked on
+                    $.ajax({
+                        url: queryURL,
+                        method: "GET"
+                    }).then(function (response) {
+                        $("#city-view").text(JSON.stringify(response));
+                        console.log(response);
+
+                        // for (var i = 0; i < recordNumber.length; i++) {
+                        //     var outputInfo = $("<div>")
+                        //     outputInfo.text(`${i + 1}
+                    })
 
 
-            /// function to clear data from search box
-
-            function renderButtons() {
-                $("#buttons-view").empty();
-
-                for (var i = 0; i < cities.length; i++) {
-
-                    var a = $("<button>");
-                    a.addClass("city");
-                    a.attr("data-name", cities[i]);
-                    a.text(cities[i]);
-                    $("#buttons-view").append(a);
                 }
-            }
 
 
-            $("#add-city").on("click", function (event) {
-                event.preventDefault();
-                var city = $("#city-input").val().trim();
-                cities.push(city);
-                console.log(cities);
 
-                renderButtons();
-                displayCityInfo(city);
-            });
+                /// function to clear data from search box
 
-        })
+                function renderButtons() {
+                    $("#buttons-view").empty();
+
+                    for (var i = 0; i < cities.length; i++) {
+
+                        var a = $("<button>");
+                        a.addClass("city");
+                        a.attr("data-name", cities[i]);
+                        a.text(cities[i]);
+                        $("#buttons-view").append(a);
+                    }
+                }
+
+
+                $("#add-city").on("click", function (event) {
+                    event.preventDefault();
+                    var city = $("#city-input").val().trim();
+                    cities.push(city);
+                    console.log(cities);
+                    var recordNumber = $("#recordNumber").val();
+
+                    renderButtons();
+                    displayCityInfo(city);
+                });
+
+            })
             // $(document).on("click", ".city", displayCityInfo);
+
         </script>
+        <script src="script.js"></script>
     </div>
 
 
