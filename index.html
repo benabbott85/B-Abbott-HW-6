@@ -10,7 +10,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
 </head>
 
 <body>
@@ -21,8 +21,7 @@
         <h1>Weather Dashboard</h1>
 
         <div class="jumbotron">
-            <h1 class="display-4" id ="locationCurrent">Current City</h1>
-            <p>Date: </p>
+            <h1 class="display-4" id="locationCurrent">Current City</h1>
             <p id="tempCurrent">Temperature:</p>
             <p id="humidCurrent">Humidity:</p>
             <p id="windCurrent">Wind Speed:</p>
@@ -31,59 +30,9 @@
 
         </div>
 
-        <h2>5 Day Forecast:</h2>
+        <!-- <h2>5 Day Forecast:</h2> -->
 
-        <div class="row row-cols-1 row-cols-md-3">
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a short card.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <div id="buttons-view"></div>
 
@@ -92,15 +41,17 @@
             <input type="text" id="city-input">
             <br>
 
-           
-        <input id="add-city" type="submit" value="Search for City">
+
+            <input id="add-city" type="submit" value="Search for City">
         </form>
 
         <!-- Cities will get put here -->
         <div id="city-view"></div>
 
-        
-            <!-- // $(document).ready(function () {
+        <h2>5 Day Forecast:</h2>
+
+
+        <!-- // $(document).ready(function () {
             //     var cities = ["Denver", "New York City", "Boston", "Park City"]
 
             //     function displayCityInfo(city) {

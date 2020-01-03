@@ -71,14 +71,13 @@ var humidity5day = [];
                     dateTemp = dateTemp.split(" ");
                     date5day[i] = dateTemp[0];
                     console.log(date5day);
-                    humidity5day[i]= response.list[4=(i*8)].main.humidity;                
+                    humidity5day[i]= response.list[4+(i*8)].main.humidity;                
                     console.log(humidity5day);
                 }
                 
             })
 
             
-
             
 
             
@@ -104,6 +103,14 @@ var humidity5day = [];
         }
     }
 
+    function pop5day(){
+        for (var i = 0; i < temp5day.length, i++;){
+            var colWrap = $("<div>").attr({"class": "col-md-2"});
+            var card = $("<div>").attr ({"class": "card", "style":"width: 18rem,"});
+            var cardbody = $("<div>").attr({"class":"card-body"});
+            
+        }
+    }
 
     $("#add-city").on("click", function (event) {
         event.preventDefault();
@@ -114,6 +121,7 @@ var humidity5day = [];
 
         renderButtons();
         displayCityInfo();
+        pop5day();
     });
 
     $("#buttons-view").on("click", "button", function (){
