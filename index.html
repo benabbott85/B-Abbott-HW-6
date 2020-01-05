@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -49,7 +50,63 @@
         <div id="city-view"></div>
 
         <h2>5 Day Forecast:</h2>
-
+        <div class="row row-cols-1 row-cols-md-5">
+            <div class="col mb-4">
+              <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title" id ="date1"></h5>
+                  <p class="card-text" id="temp1"></p>
+                  <p class="card-text" id= "humid1"></p>
+                  <p class="card-text" id="icon1"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col mb-4">
+              <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title" id="date2"></h5>
+                  <p class="card-text" id="temp2"></p>
+                  <p class="card-text" id="humid2"></p>
+                  <p class="card-text" id="icon2"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col mb-4">
+              <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title" id="date3"></h5>
+                  <p class="card-text" id="temp3"></p>
+                  <p class="card-text" id="humid3"></p>
+                  <p class="card-text" id="icon3"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col mb-4">
+              <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title" id="date4"></h5>
+                  <p class="card-text" id="temp4"></p>
+                  <p class="card-text" id="humid4"></p>
+                  <p class="card-text" id="icon4"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card">
+                  <!-- <img src="..." class="card-img-top" alt="..."> -->
+                  <div class="card-body">
+                    <h5 class="card-title" id="date5"></h5>
+                    <p class="card-text" id="temp5"></p>
+                    <p class="card-text" id="humid5"></p>
+                    <p class="card-text" id="icon5"></p>
+                  </div>
+                </div>
+              </div>
+          </div>
 
         <!-- // $(document).ready(function () {
             //     var cities = ["Denver", "New York City", "Boston", "Park City"]
