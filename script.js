@@ -91,7 +91,7 @@ var icon5day = [];
                     $("#temp4").text("Temperature: " + temperature + " F");
                     $("#humid4").text("Humidity: " + humidity + " %");
                     $("#icon4").text("Current weather: " + icon5day + " ");
-                    $("date5").text("Date: " + date + " ");4
+                    $("date5").text("Date: " + date + " ");
                     $("#temp5").text("Temperature: " + temperature + " F");
                     $("#humid5").text("Humidity: " + humidity + " %");
                     $("#icon5").text("Current weather: " + icon5day + " ");
