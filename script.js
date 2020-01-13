@@ -21,7 +21,7 @@ var icon5day = [];
     // this function contains 3 ajax calls for the weather, UV Index, and the 5 day forecast
     function displayCityInfo(city) {
         // var city = $("#city-input").val();
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + locationCurrent + "&APPID=" + apiKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + locationCurrent + "&APPID=" + apiKey;
 
         //AJAX call to be created for city that is being clicked on
         $.ajax({
@@ -41,7 +41,7 @@ var icon5day = [];
             // $("#humidCurrent").text("Humidity: " + humidity + " %");
             // $("#windCurrent").text("Wind Speed: " + wind + " MPH");
             // $("#UVCurrent").text("UV Index: " + UV);
-            var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + latCurrent + "&lon=" + lonCurrent;
+            var queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + latCurrent + "&lon=" + lonCurrent;
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -58,7 +58,7 @@ var icon5day = [];
                 $("#windCurrent").text("Wind Speed: " + wind + " MPH");
                 $("#UVCurrent").text("UV Index: " + UV);
             })
-            var queryURL = "http://api.openweathermap.org/data/2.5/forecast?appid=" + apiKey + "&q=" + locationCurrent;
+            var queryURL = "https://api.openweathermap.org/data/2.5/forecast?appid=" + apiKey + "&q=" + locationCurrent;
             
             $.ajax({
                 url: queryURL,
@@ -75,27 +75,37 @@ var icon5day = [];
                     humidity5day[i]= response.list[4+(i*8)].main.humidity;                
                     console.log(humidity5day);
                     icon5day[i]= response.list[4+(i*8)].weather.icon;
-                    $("#date1").text("Date: " + date + " ");
-                    $("#temp1").text("Temperature: " + temperature + " F");
-                    $("#humid1").text("Humidity: " + humidity + " %");
+
+                    // for (var i =0; i < response.list.length; i+8){
+                    //     console.log(response.list[i].dt_txt)
+                    
+                    $("#date1").text("Date: " + date5day[0] + " ");
+                    $("#temp1").text("Temperature: " + temp5day + " F");
+                    $("#humid1").text("Humidity: " + humidity5day + " %");
                     $("#icon1").text("Current weather: " + icon5day + " ");
-                    $("#date2").text("Date: " + date + " ");
-                    $("#temp2").text("Temperature: " + temperature + " F");
-                    $("#humid2").text("Humidity: " + humidity + " %");
+                    // $(this).append(date5day[0]);
+                    $("#date2").text("Date: " + date5day[8] + " ");
+                    $("#temp2").text("Temperature: " + temp5day[8] + " F");
+                    $("#humid2").text("Humidity: " + humidity5day[8] + " %");
                     $("#icon2").text("Current weather: " + icon5day + " ");
-                    $("#date3").text("Date: " + date + " ");
-                    $("#temp3").text("Temperature: " + temperature + " F");
-                    $("#humid3").text("Humidity: " + humidity + " %");
+                    // $(this).append(date5day[8]);
+                    $("#date3").text("Date: " + date5day[16] + " ");
+                    $("#temp3").text("Temperature: " + temp5day + " F");
+                    $("#humid3").text("Humidity: " + humidity5day + " %");
                     $("#icon3").text("Current weather: " + icon5day + " ");
-                    $("#date4").text("Date: " + date + " ");
-                    $("#temp4").text("Temperature: " + temperature + " F");
-                    $("#humid4").text("Humidity: " + humidity + " %");
+                    // $(this).append(date5day[16]);
+                    $("#date4").text("Date: " + date5day[24] + " ");
+                    $("#temp4").text("Temperature: " + temp5day + " F");
+                    $("#humid4").text("Humidity: " + humidity5day + " %");
                     $("#icon4").text("Current weather: " + icon5day + " ");
-                    $("date5").text("Date: " + date + " ");
-                    $("#temp5").text("Temperature: " + temperature + " F");
-                    $("#humid5").text("Humidity: " + humidity + " %");
+                    // $(this).append(date5day[24]);
+                    $("date5").text("Date: " + date5day[32] + " ");
+                    $("#temp5").text("Temperature: " + temp5day + " F");
+                    $("#humid5").text("Humidity: " + humidity5day + " %");
                     $("#icon5").text("Current weather: " + icon5day + " ");
+                    $(this).append(date5day[32]);
                 }
+            })
                 
             })
 
@@ -103,7 +113,7 @@ var icon5day = [];
             
 
             
-        })
+        
 
 
     }
